@@ -1,6 +1,6 @@
 ﻿namespace MvcCoreSample.DomainClasses
 {
-    public class Movie
+    public class Movie : IEntity
     {
         public int Id { get; set; }
         public string Title { get; set; }
