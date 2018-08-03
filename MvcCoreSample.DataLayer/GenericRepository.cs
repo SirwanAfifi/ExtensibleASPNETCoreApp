@@ -9,10 +9,10 @@ namespace MvcCoreSample.DataLayer
 {
     public class GenericRepository<TEntity> where TEntity : class, IEntity
     {
-        internal DbContext _dbContext;
+        internal MovieDbContext _dbContext;
         internal DbSet<TEntity> _dbSet;
 
-        public GenericRepository(DbContext context)
+        public GenericRepository(MovieDbContext context)
         {
             _dbContext = context;
             _dbSet = context.Set<TEntity>();
