@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using MvcCoreSample.DomainClasses;
 
 namespace MvcCoreSample.DataLayer
@@ -51,6 +52,29 @@ namespace MvcCoreSample.DataLayer
         {
             _dbContext.Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Deleted;
+        }
+
+        public IEnumerable<TEntity> AllInclude
+            (params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            return GetAllIncluding(includeProperties).ToList();
+        }
+
+        public IEnumerable<TEntity> FindByInclude
+            (Expression<Func<TEntity, bool>> predicate,
+            params Expression<Func<TEntity, object>>[] includeProperties)
+        {
+            var query = GetAllIncluding(includeProperties);
+            IEnumerable<TEntity> resuults = query.Where(predicate).ToList();
+            return resuults;
+        }
+
+        private IQueryable<TEntity> GetAllIncluding
+            (params Expression<Func<TEntity, object>>[] includeProperties) {
+            IQueryable<TEntity> queryable = _dbSet.AsNoTracking();
+
+            return includeProperties.Aggregate
+                (queryable, (current, includeProperty) => current.Include(includeProperty));
         }
     }
 }
