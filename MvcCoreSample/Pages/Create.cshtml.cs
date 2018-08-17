@@ -27,11 +27,10 @@ namespace MvcCoreSample.Pages
                 return Page();
             }
 
-            _movieDbContext.Add(Movie);
-            await _movieDbContext.SaveChangesAsync();
-
             // Hooks to be added
 
+            _movieDbContext.Add(Movie);
+            await _movieDbContext.SaveChangesAsync();
             return RedirectToPage("/Index");
         }
 
