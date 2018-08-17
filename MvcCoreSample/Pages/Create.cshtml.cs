@@ -20,6 +20,8 @@ namespace MvcCoreSample.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
+            // Hooks to be added
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -27,6 +29,9 @@ namespace MvcCoreSample.Pages
 
             _movieDbContext.Add(Movie);
             await _movieDbContext.SaveChangesAsync();
+
+            // Hooks to be added
+
             return RedirectToPage("/Index");
         }
 
