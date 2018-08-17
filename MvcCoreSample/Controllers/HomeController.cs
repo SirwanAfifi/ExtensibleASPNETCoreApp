@@ -1,21 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNetCore.Mvc;
 using MvcCoreSample.DataLayer;
-using MvcCoreSample.DomainClasses;
 
 namespace MvcCoreSample.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly GenericRepository<Movie> _movieRepository;
-
-        public HomeController(GenericRepository<Movie> movieRepository)
+        private readonly MovieDbContext _movieDbContext;
+        public HomeController(MovieDbContext movieDbContext)
         {
-            _movieRepository = movieRepository;
+            _movieDbContext = movieDbContext;
         }
 
         public IActionResult Index()
         {
-            var movies = _movieRepository.All();
+            var movies = _movieDbContext.Movies.ToList();
             return Json(movies);
         }
     }

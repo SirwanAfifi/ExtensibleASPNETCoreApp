@@ -22,8 +22,6 @@ namespace MvcCoreSample
         {
             services.AddDbContext<MovieDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("MovieConnection")));
 
-            services.AddScoped(typeof(GenericRepository<>), typeof(GenericRepository<>));
-
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
