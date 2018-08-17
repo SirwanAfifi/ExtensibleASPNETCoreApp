@@ -42,6 +42,8 @@ namespace MvcCoreSample
             {
                 await context.Response.WriteAsync("Hello World!");
             });
+
+            ModuleEvents = new MvcCoreSampleModuleEvents();
         }
 
         public static MvcCoreSampleModuleEvents ModuleEvents { get; set; }

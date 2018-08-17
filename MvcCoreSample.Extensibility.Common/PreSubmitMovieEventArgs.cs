@@ -12,5 +12,7 @@ namespace MvcCoreSample.Extensibility.Common
 
         public int Rating { get; set; }
         public string Title { get; set; }
+        public string ModelErrorProperty { get; set; }
+        public string ModelErrorMessage { get; set; }
     }
 }
