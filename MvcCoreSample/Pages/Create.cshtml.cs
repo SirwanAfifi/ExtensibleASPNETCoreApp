@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MvcCoreSample.DataLayer;
 using MvcCoreSample.DomainClasses;
+using MvcCoreSample.Extensibility.Common;
 
 namespace MvcCoreSample.Pages
 {
@@ -13,10 +14,14 @@ namespace MvcCoreSample.Pages
         public CreateModel(MovieDbContext movieDbContext)
         {
             _movieDbContext = movieDbContext;
+
+            _moduleEvents = Startup.ModuleEvents;
         }
 
         [BindProperty]
         public Movie Movie { get; set; }
+
+        private readonly MvcCoreSampleModuleEvents _moduleEvents;
 
         public async Task<IActionResult> OnPostAsync()
         {

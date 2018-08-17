@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MvcCoreSample.DataLayer;
+using MvcCoreSample.Extensibility.Common;
 
 namespace MvcCoreSample
 {
@@ -42,5 +43,7 @@ namespace MvcCoreSample
                 await context.Response.WriteAsync("Hello World!");
             });
         }
+
+        public static MvcCoreSampleModuleEvents ModuleEvents { get; set; }
     }
 }
