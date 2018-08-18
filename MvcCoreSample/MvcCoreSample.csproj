@@ -22,6 +22,7 @@
     <ProjectReference Include="..\MvcCoreSample.DataLayer\MvcCoreSample.DataLayer.csproj" />
     <ProjectReference Include="..\MvcCoreSample.DomainClasses\MvcCoreSample.DomainClasses.csproj" />
     <ProjectReference Include="..\MvcCoreSample.Extensibility.Common\MvcCoreSample.Extensibility.Common.csproj" />
+    <ProjectReference Include="..\MvcCoreSample.Extensibility.TheChapel\MvcCoreSample.Extensibility.TheChapel.csproj" />
     <ProjectReference Include="..\MvcCoreSample.Services\MvcCoreSample.Services.csproj" />
   </ItemGroup>
 
