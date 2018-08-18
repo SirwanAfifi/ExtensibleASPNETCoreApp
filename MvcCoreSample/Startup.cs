@@ -48,15 +48,16 @@ namespace MvcCoreSample
             });
 
             ModuleEvents = new MvcCoreSampleModuleEvents();
-            //var modulesConfig = Configuration.Get<AppSettings>();
-            /*foreach (var moduleConfig in modulesConfig)
+            var modulesConfig = Configuration.Get<AppSettings>();
+            if (modulesConfig?.ExtensibilityModules == null) return;
+            foreach (var moduleConfig in modulesConfig?.ExtensibilityModules)
             {
                 var module = Activator.CreateInstance(Type.GetType(moduleConfig.Type)) as ICoreModule;
                 if (module != null)
                 {
                     module.Initialize(ModuleEvents);
                 }
-            }*/
+            }
         }
 
         public static MvcCoreSampleModuleEvents ModuleEvents { get; set; }

@@ -4,6 +4,6 @@ namespace MvcCoreSample
 {
     public class AppSettings
     {
-        public ExtensibilityModulesConfig[] ExtensibilityModulesConfig { get; set; }
+        public ExtensibilityModulesConfig[] ExtensibilityModules { get; set; }
     }
 }
