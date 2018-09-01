@@ -7,7 +7,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MvcCoreSample.DataLayer;
+using MvcCoreSample.DomainClasses.Contracts;
 using MvcCoreSample.Extensibility.Common;
+using MvcCoreSample.Services.Contracts;
+using MvcCoreSample.Services.Engine;
 
 namespace MvcCoreSample
 {
@@ -23,9 +26,11 @@ namespace MvcCoreSample
         public void ConfigureServices(IServiceCollection services)
         {
             // Add our Config object so it can be injected
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.Configure<AppSettings>(Configuration);
 
             services.AddDbContext<MovieDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("MovieConnection")));
+
+            services.AddScoped<ICommerceEngine, CommerceEngine>();
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);

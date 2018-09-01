@@ -1,6 +1,4 @@
-﻿using MvcCoreSample.DomainClasses;
-
-namespace MvcCoreSample.Services.Contracts
+﻿namespace MvcCoreSample.DomainClasses.Contracts
 {
     public interface ICommerceEngine
     {

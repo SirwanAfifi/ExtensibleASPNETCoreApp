@@ -1,5 +1,4 @@
 ﻿using MvcCoreSample.Services.Contracts;
-
 namespace MvcCoreSample.Providers
 {
     public class PaymentProcessor : IPaymentProcessor

@@ -3,7 +3,7 @@
     public class AppSettings
     {
         public ExtensibilityModulesConfig[] ExtensibilityModules { get; set; }
-        public CommerceEngine CommerceEngine { get; set; }
+        public CommerceEngineConfig CommerceEngineConfig { get; set; }
     }
 
     public class CommerceEngineBase
@@ -12,7 +12,7 @@
         public string Name { get; set; }
     }
 
-    public class CommerceEngine
+    public class CommerceEngineConfig
     {
         public PaymentProcessor PaymentProcessor { get; set; }
         public Mailer Mailer { get; set; }

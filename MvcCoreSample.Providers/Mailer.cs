@@ -1,4 +1,5 @@
 ﻿using MvcCoreSample.DomainClasses;
+using MvcCoreSample.DomainClasses.Contracts;
 using MvcCoreSample.Services.Contracts;
 
 namespace MvcCoreSample.Providers
