@@ -10,22 +10,13 @@ namespace MvcCoreSample.Services.Engine
 {
     public class CommerceEngine : ICommerceEngine
     {
-        private AppSettings _appSettings;
+        private IPaymentProcessor _paymentProcessor;
+        private IMailer _mailer;
 
-        IPaymentProcessor _paymentProcessor;
-        IMailer _mailer;
-
-        public CommerceEngine(IOptions<AppSettings> appSettings)
+        public CommerceEngine(IConfigurationFactory configurationFactory)
         {
-            _appSettings = appSettings.Value;
-
-            var commerceEngineConfig = _appSettings.CommerceEngineConfig;
-
-            if (commerceEngineConfig != null)
-            {
-               _paymentProcessor = Activator.CreateInstance(Type.GetType(commerceEngineConfig.PaymentProcessor.Type)) as IPaymentProcessor;
-               _mailer = Activator.CreateInstance(Type.GetType(commerceEngineConfig.Mailer.Type)) as IMailer;
-            }
+            _paymentProcessor = configurationFactory.GetPaymentProcessor();
+            _mailer = configurationFactory.GetMailer();
         }
 
         public void ProcessOrder(OrderData orderData)

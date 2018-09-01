@@ -30,7 +30,8 @@ namespace MvcCoreSample
 
             services.AddDbContext<MovieDbContext>(option => option.UseSqlServer(Configuration.GetConnectionString("MovieConnection")));
 
-            services.AddScoped<ICommerceEngine, CommerceEngine>();
+            services.AddScoped<ICommerceEngine, CommerceEngine>()
+                .AddScoped<IConfigurationFactory, ConfigurationFactory>();
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
